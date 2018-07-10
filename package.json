@@ -1,0 +1,27 @@
+{
+  "name": "json-performance-research",
+  "description": "Test different ways to pass JSON data on the page to the client",
+  "version": "0.0.0",
+  "scripts": {
+    "test": "node karma"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fiverr/json-performance-research.git"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "chai": "^4.1.2",
+    "karma": "^2.0.4",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-log-reporter": "0.0.4",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-webpack": "^3.0.0",
+    "mocha": "^5.2.0",
+    "paraphrase": "^1.2.2",
+    "webpack": "^4.15.1"
+  },
+  "private": true
+}
