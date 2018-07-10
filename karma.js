@@ -3,7 +3,7 @@ const phrase = require('paraphrase/double');
 const { writeFile, readFile, unlink } = require('fs').promises;
 const { resolve } = require('path');
 const data = require('./src/data.json');
-const iterations = 2;
+const iterations = 100;
 const types = ['object', 'string'];
 
 (async() => {
