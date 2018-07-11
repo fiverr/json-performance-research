@@ -41,7 +41,7 @@ const settings = {
             'webpack',
         ],
     },
-    customContextFile: 'contexts/{{ type }}.html',
+    customContextFile: '{{ type }}.html',
 };
 
 module.exports = (config) => {

@@ -1,0 +1,49 @@
+defaults: &defaults
+  working_directory: ~/app
+  docker:
+    - image: circleci/node:10-browsers
+
+version: 2
+jobs:
+  dependencies:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install dependencies
+          command: npm i
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Run tests
+          command: npm t --i=50 --webhook=${SLACK_WEBHOOK}
+
+experimental:
+  notify:
+    branches:
+      only:
+        - master
+
+workflows:
+  version: 2
+  experiment:
+    jobs:
+      - dependencies:
+          filters:
+            branches:
+              only:
+                - master
+      - test:
+          context: org-global
+          requires:
+            - dependencies
